@@ -206,6 +206,7 @@ ANSC_STATUS wanmgr_handle_dhcpv4_event_data(DML_VIRTUAL_IFACE* pVirtIf)
             snprintf(value, sizeof(value), "%d", pDhcpcInfo->leaseTime);
             sysevent_set(sysevent_fd, sysevent_token, name, value, 0);
 
+	     CcspTraceInfo(("%s %d - setting leaset = [%d]  \n", __FUNCTION__, __LINE__,  pDhcpcInfo->leaseTime));
 #if !defined(FEATURE_RDKB_CONFIGURABLE_WAN_INTERFACE)
             if (pDhcpcInfo->isTimeOffsetAssigned)
             {
