@@ -189,7 +189,7 @@ BOOL WanManager_SetParamStringValue(ANSC_HANDLE hInsContext, char* ParamName, ch
         if (strcmp(ParamName, "Data") == 0)
         {
             char *webConf = NULL;
-            size_t webSize = 0;
+            ULONG webSize = 0;
 
             webConf = AnscBase64Decode(pString, &webSize);
             if(!webConf)
@@ -198,7 +198,7 @@ BOOL WanManager_SetParamStringValue(ANSC_HANDLE hInsContext, char* ParamName, ch
                 WanMgrDml_GetConfigData_release(pWanConfigData);
                 return ret;
             }
-            if ( ANSC_STATUS_SUCCESS == WanMgrDmlWanDataSet(webConf,webSize) )
+            if ( ANSC_STATUS_SUCCESS == WanMgrDmlWanDataSet(webConf,(size_t)webSize) )
             {
                 CcspTraceInfo(("%s Success in parsing web config blob..\n",__FUNCTION__));
                 ret = TRUE;
@@ -213,7 +213,7 @@ BOOL WanManager_SetParamStringValue(ANSC_HANDLE hInsContext, char* ParamName, ch
         else if (strcmp(ParamName, "WanFailoverData") == 0)
         {
             char *webConf = NULL;
-            size_t webSize = 0;
+            ULONG webSize = 0;
 
             webConf = AnscBase64Decode(pString, &webSize);
             if(!webConf)
@@ -222,7 +222,7 @@ BOOL WanManager_SetParamStringValue(ANSC_HANDLE hInsContext, char* ParamName, ch
                 WanMgrDml_GetConfigData_release(pWanConfigData);
                 return ret;
             }
-            if ( ANSC_STATUS_SUCCESS == WanMgrDmlWanFailOverDataSet(webConf,webSize) )
+            if ( ANSC_STATUS_SUCCESS == WanMgrDmlWanFailOverDataSet(webConf,(size_t)webSize) )
             {
                 CcspTraceInfo(("%s Success in parsing web config blob..\n",__FUNCTION__));
                 ret = TRUE;

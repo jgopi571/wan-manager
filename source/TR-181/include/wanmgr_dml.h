@@ -22,6 +22,32 @@
 
 #include "ipc_msg.h"
 
+/* Fallback definition: some platform sysroots (e.g. XB7) do not expose
+ * ipc_mapt_data_t via ipc_msg.h even when FEATURE_MAPT is enabled.
+ * Define it here only if the external header has not already done so.
+ */
+#ifdef FEATURE_MAPT
+#ifndef IPC_MAPT_DATA_T_DEFINED
+typedef struct _ipc_mapt_data
+{
+    char         ruleIPv4Prefix[32];
+    char         ruleIPv6Prefix[128];
+    char         pdIPv6Prefix[128];
+    char         brIPv6Prefix[128];
+    unsigned int ratio;
+    int          v4Len;
+    int          v6Len;
+    int          iapdPrefixLen;
+    int          eaLen;
+    int          psidOffset;
+    int          psidLen;
+    int          psid;
+    BOOL         isFMR;
+} ipc_mapt_data_t;
+#define IPC_MAPT_DATA_T_DEFINED
+#endif /* IPC_MAPT_DATA_T_DEFINED */
+#endif /* FEATURE_MAPT */
+
 #define PAM_COMPONENT_NAME          "eRT.com.cisco.spvtg.ccsp.pam"
 #define PAM_DBUS_PATH               "/com/cisco/spvtg/ccsp/pam"
 #define PAM_NOE_PARAM_NAME          "Device.IP.InterfaceNumberOfEntries"
