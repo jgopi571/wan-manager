@@ -282,10 +282,10 @@ if ( TRUE == UseWANMACForManagementServices )
     snprintf(name,sizeof(name),SYSEVENT_IPV4_DHCP_STATE ,dhcp4Info->ifname);
     sysevent_set(sysevent_fd, sysevent_token,name, dhcp4Info->dhcpState,0);
 
-    snprintf(name,sizeof(name), SYSEVENT_IPV4_LEASE_TIME, dhcp4Info->ifname);
+   /* snprintf(name,sizeof(name), SYSEVENT_IPV4_LEASE_TIME, dhcp4Info->ifname);
     snprintf(value, sizeof(value), "%u",dhcp4Info->leaseTime);
-    sysevent_set(sysevent_fd, sysevent_token,name, value, 0);
-    CcspTraceInfo(("%s %d - setting sysevent leaasetime = [%d]  \n", __FUNCTION__, __LINE__, dhcp4Info->leaseTime));
+    sysevent_set(sysevent_fd, sysevent_token,name, value, 0);*/
+    CcspTraceInfo(("%s %d - setting sysevent leaasetime = [%d] not setting \n", __FUNCTION__, __LINE__, dhcp4Info->leaseTime));
 #endif
     CcspTraceInfo(("%s %d - setting sysevent lease = [%d]  \n", __FUNCTION__, __LINE__, dhcp4Info->leaseTime));
     return ANSC_STATUS_SUCCESS;
