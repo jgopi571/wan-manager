@@ -160,10 +160,10 @@ ANSC_STATUS wanmgr_handle_dhcpv4_event_data(DML_VIRTUAL_IFACE* pVirtIf)
     uint32_t up_time = 0;
 
     /* ipv4_start_time should be set in every v4 packets */
-    snprintf(name,sizeof(name),SYSEVENT_IPV4_START_TIME,pDhcpcInfo->dhcpcInterface);
+   // snprintf(name,sizeof(name),SYSEVENT_IPV4_START_TIME,pDhcpcInfo->dhcpcInterface);
     up_time = WanManager_getUpTime();
-    snprintf(value, sizeof(value), "%u", up_time);
-    sysevent_set(sysevent_fd, sysevent_token, name, value, 0);
+    //snprintf(value, sizeof(value), "%u", up_time);
+    //sysevent_set(sysevent_fd, sysevent_token, name, value, 0);
 
     if (pDhcpcInfo->addressAssigned)
     {
